@@ -21,8 +21,8 @@
 #
 class mediawiki::params {
 
-  $major              = '1.26'
-  $minor              = '2'
+  $major              = '1.29'
+  $minor              = '1'
   $tarball_url        = "http://releases.wikimedia.org/mediawiki/$major/mediawiki-$major.$minor.tar.gz"
   $conf_dir           = '/etc/mediawiki'
   $installation_files = ['api.php',
@@ -65,19 +65,19 @@ class mediawiki::params {
     redhat, centos:  {
       $web_dir            = '/var/www/html'
       $doc_root           = "${web_dir}/wikis"
-      $packages           = ['php-gd', 'php-mysql', 'php-xml', 'wget', 'php-pecl-apcu', 'php-intl']
+      $packages           = ['php-gd', 'php-mysql', 'php-xml', 'php-mbstring', 'wget', 'php-pecl-apcu', 'php-intl']
       $apache             = $apache::params::service_name
     }
     debian:  {
       $web_dir            = '/var/www'
       $doc_root           = "${web_dir}/wikis"
-      $packages           = ['php5', 'php5-mysql', 'wget']
+      $packages           = ['php', 'php-mysql', 'php-xml', 'php-mbstring', 'wget']
       $apache             = $apache::params::service_name
     }
     ubuntu:  {
       $web_dir            = '/var/www'
       $doc_root           = "${web_dir}/wikis"
-      $packages           = ['php5', 'php5-mysql', 'wget']
+      $packages           = ['php', 'php-mysql', 'php-xml', 'php-mbstring', 'wget']
       $apache             = $apache::params::service_name
     }
     default: {
